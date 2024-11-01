@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <center>
+            <h2>
+                Verificación de Calificaciones
+            </h2>
+        </center>
+    </header>
+    <main class="cuerpo">
+        <center>
+            <table>
+                <tr>
+                    <td>
+                        <ul>
+                            <li><input type="number" id="num1" placeholder="Calificación entre 0 - 100"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button onclick="calcular()">Calcular</button>
+                    </td>
+                </tr>
+                <tr>
+                    <center>
+                        <td>
+                            <h4><span id="resultado"></span></h4>
+                        </td>
+                    </center>
+                </tr>
+            </table>
+        </center>
+    </main>
+    <footer class="piepagina">
+
+    </footer>
+
+    <center>
+        <h2>
+            Par o Impar
+        </h2>
+
+        <ul>
+            <input type="number" id="num2" placeholder="ingrese un número">
+        </ul>
+
+        <td>
+            <button onclick="ver()">Ver</button>
+        </td>
+
+        <tr>
+            <center>
+                <td>
+                    <h4><span id="res"></span></h4>
+                </td>
+            </center>
+        </tr>
+
+    </center>
+   
+    <center>
+        <h2>
+           Total a pagar
+        </h2>
+
+        <ul>
+            <input type="number" id="num3" placeholder="ingrese el Total">
+        </ul>
+
+        <td>
+            <button onclick="total()">Ver</button>
+        </td>
+
+        <tr>
+            <center>
+                <td>
+                    <h4><span id="compra1"></span></h4>
+                    <h4><span id="compra"></span></h4>
+
+                </td>
+            </center>
+        </tr>
+
+    </center>
+
+    <center>
+        <h2>
+            Juego de adivinanza 
+        </h2>
+
+        <ul>
+            <input type="number" id="num7" placeholder="ingrese un número">
+        </ul>
+
+        <td>
+            <button onclick="ver()">Ver</button>
+        </td>
+
+        <tr>
+            <center>
+                <td>
+                    <h4><span id="adivina"></span></h4>
+                </td>
+            </center>
+        </tr>
+
+    </center>
+
+
+    <script>
+
+        function adivinanza(){
+            const a= parseFloat(document.getElementById("num7")); 
+            const adivina= parseFloat(document.getElementById("adivina")); 
+
+                 let numero = Math.floor(Math.random()*10);
+
+                 if(a==numero){
+                    adivina.textContent= "Felicidades hpppppp VIVA PETRO";
+                 } else{
+                    adivina.textContent="el numero era "+numero; 
+                 }
+
+
+}
+
+
+
+
+
+        function calcular() {
+            const a = parseFloat(document.getElementById("num1").value);
+            const resultado = document.getElementById("resultado");
+
+            if (isNaN(a)) {
+                resultado.textContent = "Ingrese una calificación válida";
+                return;
+            }
+
+            if (a >= 90) {
+                resultado.textContent = "Aprobado con Honores";
+            } else if (a >= 70) {
+                resultado.textContent = "Aprobado";
+            } else {
+                resultado.textContent = "Reprobado";
+            }
+        }
+        function par() {
+            const b = parseFloat(document.getElementById("num2").value);
+            const res = document.getElementById("res");
+
+            if (isNaN(b)) {
+                res.textContent = "Ingrese un numero";
+                return;
+            }
+            else if ( b %2 === 0) {
+                res.textContent = "es par";
+            } else {
+                res.textContent = "impar";
+            }
+
+
+        }
+
+        function total(){
+      const total1= parseFloat(document.getElementById("num3").value);
+      const compra= document.getElementById("compra")
+      const compra1= document.getElementById("compra1")
+
+      if(total1>100){
+        compra1.textContent = "Aplica descuento";
+        let resul= total1*0.10;
+        let resul2= total1-resul;
+        compra.textContent = "Total a pagar: "+ resul2;
+       
+      }else if(total1<=100){
+        compra1.textContent = "No aplica descuento";
+
+      } 
+
+
+      
+s
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
