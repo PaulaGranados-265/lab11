@@ -48,13 +48,11 @@
             Par o Impar
         </h2>
 
-        <ul>
-            <input type="number" id="num2" placeholder="ingrese un número">
-        </ul>
 
-        <td>
-            <button onclick="ver()">Ver</button>
-        </td>
+        <input type="number" id="num2" placeholder="ingrese un número">
+
+
+        <button onclick="Calcular2()">Ver</button>
 
         <tr>
             <center>
@@ -65,19 +63,25 @@
         </tr>
 
     </center>
-   
+
+    <center>
+        <h2>Bucle while</h2>
+        <input type="number" id="numw" placeholder="Ingrese un número">
+        <button onclick="bucle()">Verificar</button>
+        <p id="result"></p>
+    </center>
+
+
     <center>
         <h2>
-           Total a pagar
+            Total a pagar
         </h2>
 
-        <ul>
-            <input type="number" id="num3" placeholder="ingrese el Total">
-        </ul>
 
-        <td>
-            <button onclick="total()">Ver</button>
-        </td>
+        <input type="number" id="num3" placeholder="ingrese el Total">
+
+        <button onclick="total()">total</button>
+
 
         <tr>
             <center>
@@ -93,16 +97,13 @@
 
     <center>
         <h2>
-            Juego de adivinanza 
+            Juego de adivinanza
         </h2>
 
-        <ul>
-            <input type="number" id="num7" placeholder="ingrese un número">
-        </ul>
 
-        <td>
-            <button onclick="ver()">Ver</button>
-        </td>
+        <input type="number" id="num7" placeholder="ingrese un número">
+
+        <button onclick="calcular3()">adivinarr</button>
 
         <tr>
             <center>
@@ -114,26 +115,53 @@
 
     </center>
 
+    <center>
+        <h2>Total de un arreglo de números</h2>
+        <button onclick="calcularTotall()">Calcular Total</button>
+        <p id="suma"> </p>
+
+
+
+
+    </center>
+    <center>
+        <h2>Ingrese la Contraseña</h2>
+        <input type="password" id="password" placeholder="Contraseña">
+        <button onclick="verificarPassword()">Verificar</button>
+        <p id="contraseñaa"></p>
+    </center>
 
     <script>
+        function bucle() {
+            let numInput = document.getElementById("numw").value;
+            const resultado = document.getElementById("result");
 
-        function adivinanza(){
-            const a= parseFloat(document.getElementById("num7")); 
-            const adivina= parseFloat(document.getElementById("adivina")); 
+            while (true) {
+                let num = parseInt(numInput);
 
-                 let numero = Math.floor(Math.random()*10);
-
-                 if(a==numero){
-                    adivina.textContent= "Felicidades hpppppp VIVA PETRO";
-                 } else{
-                    adivina.textContent="el numero era "+numero; 
-                 }
-
-
-}
+                if (num >= 0) {
+                    resultado.textContent = "Número positivo. Sigue intentando...";
+                    break;
+                } else {
+                    resultado.textContent = "Se ingresó un número negativo. El bucle se ha detenido.";
+                    break;
+                }
+            }
+        }
 
 
+        function calcular3() {
+            const a = parseFloat(document.getElementById("num7").value);
+            const adivinar = document.getElementById("adivina");
 
+            let numero = Math.floor(Math.random() * 10);
+
+            if (a === numero) {
+                adivinar.textContent = "¡Felicidades! Has adivinado correctamente. VIVA PETRO";
+            } else {
+                adivinar.textContent = "El número era " + numero;
+            }
+        }
 
 
         function calcular() {
@@ -153,7 +181,7 @@
                 resultado.textContent = "Reprobado";
             }
         }
-        function par() {
+        function Calcular2() {
             const b = parseFloat(document.getElementById("num2").value);
             const res = document.getElementById("res");
 
@@ -161,7 +189,7 @@
                 res.textContent = "Ingrese un numero";
                 return;
             }
-            else if ( b %2 === 0) {
+            else if (b % 2 === 0) {
                 res.textContent = "es par";
             } else {
                 res.textContent = "impar";
@@ -170,35 +198,57 @@
 
         }
 
-        function total(){
-      const total1= parseFloat(document.getElementById("num3").value);
-      const compra= document.getElementById("compra")
-      const compra1= document.getElementById("compra1")
+        function total() {
+            const total1 = parseFloat(document.getElementById("num3").value);
+            const compra = document.getElementById("compra")
+            const compra1 = document.getElementById("compra1")
 
-      if(total1>100){
-        compra1.textContent = "Aplica descuento";
-        let resul= total1*0.10;
-        let resul2= total1-resul;
-        compra.textContent = "Total a pagar: "+ resul2;
-       
-      }else if(total1<=100){
-        compra1.textContent = "No aplica descuento";
+            if (total1 > 100) {
+                compra1.textContent = "Aplica descuento";
+                let resul = total1 * 0.10;
+                let resul2 = total1 - resul;
+                compra.textContent = "Total a pagar: " + resul2;
 
-      } 
+            } else if (total1 <= 100) {
+                compra1.textContent = "No aplica descuento";
 
-
-      
-s
+            }
         }
 
+        function calcularTotall() {
+
+            let numeros = [10, 20, 30, 40, 50];
+
+            let total = 0;
+
+            for (let i = 0; i < numeros.length; i++) {
+                total += numeros[i];
 
 
 
+            }
+            let promedio = total / numeros.length;
 
+            document.getElementById("suma").textContent = " el total es: " + total + "El promedio es: " + promedio;
 
+        }
 
+        function verificarPassword() {
+            const correcta = "talentotech";
+            let password;
+            const resultado = document.getElementById("contraseñaa");
 
+            do {
+                password = document.getElementById("password").value;
 
+                if (password !== correcta) {
+                    resultado.textContent = "Contraseña incorrecta. Intente de nuevo.";
+                    return;
+                }
+            } while (password !== correcta);
+
+            resultado.textContent = "Tu si sabe'";
+        }
 
 
     </script>
